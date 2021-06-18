@@ -17,9 +17,12 @@ COST_GALLON = 25
 
 meters = float(input("Quantos metros você quer: "))
 
+#Multi-uso
+liter = meters / LITER_PER_METERS
+
+
 print("Só latas")
 
-liter = meters / LITER_PER_METERS
 liters_tin = liter / LITER_TIN
 liters = math.ceil(liters_tin)
 cost_liter = liters * COST_LITER
@@ -46,10 +49,10 @@ else:
 
 print("Latas e galões")
 
-mix_L = int(LITER_TIN / 18.0)
-mix_G = int((LITER_TIN - (mix_L * 18)) / 3.6)
+mix_A = int(liter / 18.0)
+mix_B = int((liter - (mix_A * 18)) / 3.6)
 
-if (mix_G != 0):
-  mix_G += 1
+if ((liter - (mix_A * 18) % 3.6 != 0)):
+    mix_B += 1
 
-print("")
+print('Mistura: %d latas e %d galoes = %.2f' % (mix_A, mix_B, ((mix_A * 80) + (mix_B * 25))))
